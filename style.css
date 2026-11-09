@@ -1,0 +1,16 @@
+
+body {
+    font-family: Arial;
+    text-align: center;
+}
+
+video, canvas {
+    display: block;
+    width: 300px;
+    margin: 20px auto;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+}
