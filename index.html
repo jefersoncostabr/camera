@@ -1,23 +1,52 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Câmera</title>
+    <title>Comparar rostos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <main>
+        <h1>Comparar rostos</h1>
+        <p>Escolha duas fotos com um rosto visível em cada uma para verificar se parecem ser da mesma pessoa.</p>
+        <p id="status" role="status" aria-live="polite">Carregando os modelos de reconhecimento facial...</p>
 
-    <h1>Minha Câmera</h1>
+        <section class="fotos" aria-label="Fotos para comparar">
+            <div class="foto">
+                <label for="foto1">Primeira foto</label>
+                <input id="foto1" type="file" accept="image/*" capture="user">
+                <img id="preview1" alt="Prévia da primeira foto" hidden>
+            </div>
+            <div class="foto">
+                <label for="foto2">Segunda foto</label>
+                <input id="foto2" type="file" accept="image/*" capture="user">
+                <img id="preview2" alt="Prévia da segunda foto" hidden>
+            </div>
+        </section>
 
-    <video id="camera" autoplay playsinline></video>
+        <button id="comparar" type="button" disabled>Comparar fotos</button>
+        <p id="resultado" role="status" aria-live="polite"></p>
 
-    <button id="iniciar">Iniciar câmera</button>
-    <button id="capturar">Capturar foto</button>
+        <details>
+            <summary>Ou tire uma foto com a câmera</summary>
+            <label for="destino">Usar como</label>
+            <select id="destino">
+                <option value="1">Primeira foto</option>
+                <option value="2">Segunda foto</option>
+            </select>
+            <div class="controles-camera">
+                <button id="iniciar" type="button">Iniciar câmera</button>
+                <button id="capturar" type="button" disabled>Capturar foto</button>
+            </div>
+            <video id="camera" autoplay playsinline></video>
+            <canvas id="foto" hidden></canvas>
+        </details>
 
-    <canvas id="foto"></canvas>
+        <p class="aviso">A análise acontece neste navegador. O resultado é uma estimativa e não deve ser usado como prova de identidade.</p>
+    </main>
 
-    <script src="script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script defer src="script.js"></script>
 </body>
 </html>
